@@ -17,7 +17,7 @@ namespace GabDemo.Pattern5.HumanInteraction.Workflows
             await context.CallActivityAsync("SendVerificationEmail", userId);
 
             // setting up due time - user has two hours to verify his email, or he needs to request a new verification email
-            var dueTime = TimeSpan.FromSeconds(20);
+            var dueTime = TimeSpan.FromHours(2);
 
             try
             {

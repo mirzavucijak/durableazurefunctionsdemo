@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace GabDemo.Pattern2.FanOutFanIn
 {
-    public static class GetWeather
+    public static class GetWeatherApi
     {
         [FunctionName("GetWeather")]
-        public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Function, "get", Route = null)]HttpRequestMessage req,
+        public static async Task<HttpResponseMessage> Run(
+            [HttpTrigger(AuthorizationLevel.Function, "get", Route = null)]HttpRequestMessage req,
             [OrchestrationClient] DurableOrchestrationClient client)
         {
             string startDate = req.GetQueryNameValuePairs()

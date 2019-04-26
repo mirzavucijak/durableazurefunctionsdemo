@@ -22,9 +22,10 @@ namespace GabDemo.Pattern2.FanOutFanIn
                 requests[i] = context.CallActivityAsync<WeatherDto>("GetWeatherFromApi", date.AddDays(i));
             }
 
+            // fan in
             await Task.WhenAll(requests);
 
-            // fan in (aggregate results)
+            // aggregate results
             return requests.Select(x => x.Result).Where(x => x != null);
         }
     }

@@ -1,5 +1,6 @@
 using Microsoft.Azure.WebJobs;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace GabDemo.Pattern1.FunctionChaining
@@ -8,8 +9,7 @@ namespace GabDemo.Pattern1.FunctionChaining
     {
         [FunctionName("HelloWorkflow")]
         public static async Task<IEnumerable<string>> Run(
-            [OrchestrationTrigger] DurableOrchestrationContext context,
-            [OrchestrationClient] DurableOrchestrationClient client)
+            [OrchestrationTrigger] DurableOrchestrationContext context)
         {
             var output = new List<string>();
 

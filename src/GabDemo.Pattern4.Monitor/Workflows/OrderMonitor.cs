@@ -12,7 +12,6 @@ namespace GabDemo.Pattern4.Monitor.Workflows
             var orderJobId = context.GetInput<string>();
 
             // poll every two minutes for next two hours
-            var pollingInterval = 5;
             var expiryTime = context.CurrentUtcDateTime.AddHours(2);
 
             while (context.CurrentUtcDateTime < expiryTime)
@@ -28,7 +27,7 @@ namespace GabDemo.Pattern4.Monitor.Workflows
                 }
 
                 // order is not submitted. Wait for two minutes and check again...
-                var nextCheck = context.CurrentUtcDateTime.AddMinutes(pollingInterval);
+                var nextCheck = context.CurrentUtcDateTime.AddMinutes(2);
                 await context.CreateTimer(nextCheck, CancellationToken.None);
             }
 
